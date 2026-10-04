@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="AWM (Always Watching Markets) is an independent market research and newsletter company.">
+<meta property="og:title" content="AWM · Always Watching Markets">
+<meta property="og:image" content="assets/awm-banner.png">
+<link rel="icon" href="assets/awm-logo.png">
+<title>AWM · Always Watching Markets</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one calm column on cream, brand mark as the hero, sections separated by short gold rules like the logo's underline. */
+:root {
+  --cream: #F5F2EC;
+  --paper: #FBF9F5;
+  --navy: #0F1E33;
+  --navy-soft: #3B475A;
+  --gold: #9A7535;
+  --line: #E4DED3;
+  --display: "Cormorant Garamond", "Cormorant", Georgia, "Times New Roman", serif;
+  --body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--navy);
+  font: 400 1.0625rem/1.7 var(--body);
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--navy); text-decoration-color: var(--gold); text-underline-offset: 3px; }
+a:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+.wrap { max-width: 68rem; margin: 0 auto; padding-inline: 1.5rem; }
+
+/* Top bar */
+.top { padding-block: 1.25rem; border-bottom: 1px solid var(--line); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.brand { display: flex; align-items: center; gap: .75rem; text-decoration: none; }
+.brand svg { width: 2.75rem; height: auto; }
+.brand span { font: 600 1.5rem/1 var(--display); letter-spacing: .14em; }
+nav { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+nav a { font: 500 .75rem/1 var(--body); letter-spacing: .18em; text-transform: uppercase; text-decoration: none; color: var(--navy-soft); }
+nav a:hover { color: var(--navy); }
+
+/* Hero */
+.hero { position: relative; overflow: hidden; padding-block: 6rem 5rem; text-align: center; }
+.hero .rings { position: absolute; left: -9rem; top: 50%; transform: translateY(-50%); width: 34rem; max-width: none; pointer-events: none; }
+.hero .inner { position: relative; display: grid; justify-items: center; gap: 1.5rem; }
+.hero h1 { margin: 0; font: 600 clamp(4rem, 13vw, 8.5rem)/.9 var(--display); letter-spacing: .12em; padding-left: .12em; }
+.rule { width: 6rem; height: 1px; background: var(--gold); border: 0; margin: 0; }
+.tagline { margin: 0; font: 500 clamp(.8rem, 2vw, 1rem)/1.6 var(--body); letter-spacing: .3em; text-transform: uppercase; }
+.lede { margin: 1rem 0 0; max-width: 36rem; color: var(--navy-soft); font-size: 1.125rem; text-wrap: balance; }
+
+/* Sections */
+section.block { padding-block: 5rem; border-top: 1px solid var(--line); }
+.grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 3rem; }
+.eyebrow { margin: 0 0 1rem; font: 500 .75rem/1 var(--body); letter-spacing: .22em; text-transform: uppercase; color: var(--gold); }
+h2 { margin: 0; font: 600 clamp(2rem, 4.5vw, 3rem)/1.1 var(--display); text-wrap: balance; }
+.prose { max-width: 40rem; }
+.prose p { margin: 0 0 1.1rem; }
+.prose p:last-child { margin-bottom: 0; }
+
+.pillars { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.5rem; margin-top: 3rem; }
+.pillar { display: grid; gap: .75rem; align-content: start; }
+.pillar h3 { margin: 0; font: 600 1.6rem/1.2 var(--display); }
+.pillar h3::before { content: ""; display: block; width: 2rem; height: 1px; background: var(--gold); margin-bottom: 1rem; }
+.pillar p { margin: 0; color: var(--navy-soft); }
+
+/* Market watch strip */
+.watch { background: var(--navy); color: var(--cream); }
+.watch .wrap { padding-block: 3.5rem; display: grid; gap: 2rem; }
+.watch .eyebrow { color: #C9A464; }
+.watch h2 { color: var(--cream); }
+.sessions { display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); gap: 1px; background: rgba(245,242,236,.15); border: 1px solid rgba(245,242,236,.15); }
+.session { background: var(--navy); padding: 1.25rem 1.25rem 1.4rem; display: grid; gap: .35rem; }
+.session .city { font: 600 1.5rem/1.1 var(--display); }
+.session .hours { font: 400 .9rem/1.4 var(--mono); font-variant-numeric: tabular-nums; color: #C9A464; }
+.session .what { font-size: .875rem; color: rgba(245,242,236,.72); }
+
+/* Summary */
+.summary { background: var(--paper); }
+.facts { margin: 2.5rem 0 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--line); }
+.facts div { padding: 1.25rem 1.25rem 0 0; display: grid; gap: .3rem; }
+.facts dt { font: 500 .7rem/1.2 var(--body); letter-spacing: .2em; text-transform: uppercase; color: var(--gold); }
+.facts dd { margin: 0; font: 600 1.35rem/1.25 var(--display); }
+
+footer { padding-block: 3rem; border-top: 1px solid var(--line); font-size: .85rem; color: var(--navy-soft); }
+footer .wrap { display: grid; gap: 1rem; }
+footer .row { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
+.disclaimer { max-width: 48rem; font-size: .8rem; line-height: 1.6; }
+
+@media (max-width: 760px) {
+  .grid, .pillars { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
+  .pillars { gap: 2rem; }
+  .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hero { padding-block: 4rem 3.5rem; }
+  .hero .rings { left: -14rem; opacity: .7; }
+  section.block { padding-block: 3.5rem; }
+  nav { gap: 1rem; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero .inner > * { animation: rise .9s ease-out both; }
+  .hero .inner > *:nth-child(2) { animation-delay: .15s; }
+  .hero .inner > *:nth-child(3) { animation-delay: .3s; }
+  .hero .inner > *:nth-child(4) { animation-delay: .45s; }
+  @keyframes rise { from { opacity: .001; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="AWM home">
+      <svg viewBox="0 0 120 84" aria-hidden="true"><circle cx="42" cy="42" r="38" fill="none" stroke="#0F1E33" stroke-width="5"/><circle cx="78" cy="42" r="38" fill="none" stroke="#0F1E33" stroke-width="5"/><circle cx="60" cy="42" r="8" fill="#9A7535"/></svg>
+      <span>AWM</span>
+    </a>
+    <nav aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#purpose">Purpose</a>
+      <a href="#summary">Summary</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <svg class="rings" viewBox="0 0 600 420" aria-hidden="true"><circle cx="210" cy="210" r="205" fill="none" stroke="#E4DED3" stroke-width="2"/><circle cx="390" cy="210" r="205" fill="none" stroke="#E4DED3" stroke-width="2"/></svg>
+    <div class="wrap inner">
+      <h1>AWM</h1>
+      <hr class="rule">
+      <p class="tagline">Always Watching Markets</p>
+      <p class="lede">Clear, independent reporting on what moves global markets, written so you can follow the story without watching every screen yourself.</p>
+    </div>
+  </div>
+
+  <section class="block" id="about">
+    <div class="wrap grid">
+      <div>
+        <p class="eyebrow">About us</p>
+        <h2>Who we are</h2>
+      </div>
+      <div class="prose">
+        <p>AWM, short for Always Watching Markets, is a market research and newsletter company. We follow equities, interest rates, currencies and commodities every trading day and turn what happened into short, readable reports.</p>
+        <p>Our readers are investors, professionals and curious people who want to understand the markets without spending their whole day in front of charts. We do the watching, and we explain what matters and why.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="purpose">
+    <div class="wrap">
+      <div class="grid">
+        <div>
+          <p class="eyebrow">Our purpose</p>
+          <h2>Why AWM exists</h2>
+        </div>
+        <div class="prose">
+          <p>Markets never sleep, and the volume of news, data and opinion is overwhelming. Our purpose is to cut through that noise and give people a calm, honest view of the market so they can make their own informed decisions.</p>
+        </div>
+      </div>
+      <div class="pillars">
+        <div class="pillar">
+          <h3>Watch</h3>
+          <p>We monitor the major markets across every trading session, from the Asian open to the New York close.</p>
+        </div>
+        <div class="pillar">
+          <h3>Understand</h3>
+          <p>We look past the headlines to the data behind a move: earnings, central bank decisions, economic releases and flows.</p>
+        </div>
+        <div class="pillar">
+          <h3>Explain</h3>
+          <p>We write it up in plain language, with the context you need and nothing you don't.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="watch" aria-labelledby="watch-title">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Around the clock</p>
+        <h2 id="watch-title">The sessions we follow</h2>
+      </div>
+      <div class="sessions">
+        <div class="session"><span class="city">Tokyo</span><span class="hours">09:00 – 15:00 JST</span><span class="what">Nikkei 225, yen, Asian rates</span></div>
+        <div class="session"><span class="city">London</span><span class="hours">08:00 – 16:30 GMT</span><span class="what">FTSE 100, sterling, euro, Brent crude</span></div>
+        <div class="session"><span class="city">New York</span><span class="hours">09:30 – 16:00 ET</span><span class="what">S&amp;P 500, Nasdaq, Treasuries, gold</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block summary" id="summary">
+    <div class="wrap">
+      <div class="grid">
+        <div>
+          <p class="eyebrow">In summary</p>
+          <h2>AWM at a glance</h2>
+        </div>
+        <div class="prose">
+          <p>AWM is an independent market newsletter that watches global markets so our readers don't have to. We publish regular reports that summarize what moved, why it moved, and what to keep an eye on next, in clear language and without hype.</p>
+        </div>
+      </div>
+      <dl class="facts">
+        <div><dt>Name</dt><dd>Always Watching Markets</dd></div>
+        <div><dt>What we do</dt><dd>Market reports &amp; newsletter</dd></div>
+        <div><dt>Coverage</dt><dd>Stocks, rates, FX, commodities</dd></div>
+        <div><dt>For</dt><dd>Investors &amp; curious readers</dd></div>
+      </dl>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <span>© <span id="yr">2026</span> AWM · Always Watching Markets</span>
+    </div>
+    <p class="disclaimer">AWM publishes market commentary for information only. Nothing on this site or in our reports is investment advice or a recommendation to buy or sell any security.</p>
+  </div>
+</footer>
+<script>document.getElementById("yr").textContent = new Date().getFullYear();</script>
+</body>
+</html>
